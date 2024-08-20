@@ -1,0 +1,19 @@
+SELECT 
+    e.EmployeeID,   -- ID del empleado
+    e.FirstName,    -- Primer nombre del empleado
+    e.LastName,     -- Apellido del empleado
+    o.OrderID,      -- ID de la orden
+    p.ProductName,  -- Nombre del producto
+    c.CategoryName  -- Nombre de la categoría
+FROM 
+    Employees e
+JOIN 
+    Orders o ON e.EmployeeID = o.EmployeeID
+JOIN 
+    Order Details od ON o.OrderID = od.OrderID
+JOIN 
+    Products p ON od.ProductID = p.ProductID
+JOIN 
+    Categories c ON p.CategoryID = c.CategoryID
+WHERE 
+    c.CategoryName = 'Beverages';
